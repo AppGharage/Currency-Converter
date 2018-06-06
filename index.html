@@ -78,10 +78,17 @@ if ('serviceWorker' in navigator) {
 }
 //Checking User Connectivity Status
 window.addEventListener('online', function () {
-    document.querySelector('.connectivity-status').innerText = 'online';
+    //document.querySelector('.connectivity-status').innerText = 'online';
+
 });
 window.addEventListener('offline', function () {
-    document.querySelector('.connectivity-status').innerText = 'offline';
+    //document.querySelector('.connectivity-status').innerText = 'offline';
+    const toast = this.toastCtrl.create({
+				message: 'Oops! It looks like you are offline.',
+				position: 'bottom',
+				showCloseButton: true,
+			});
+	toast.present();
 });
 </script>
 <script>
