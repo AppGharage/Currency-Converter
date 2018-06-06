@@ -1,6 +1,6 @@
 {
     "short_name": "Currenci",
-    "name": "A CUrrency COnvertion application",
+    "name": "Currency Convertor",
     "icons": [
         {
             "src": "images/icon@2x.png",
@@ -9,7 +9,8 @@
         }
     ],
     "start_url": "/",
-    "background_color": "#FFFFFF",
-    "theme_color": "#3E82F7",
-    "display": "minimal-ui"
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "fullscreen",
+    "orientation": "portrait"
 }
