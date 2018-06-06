@@ -3,21 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1">
-<meta name="theme-color" content="#3E82F7">
+<meta name="theme-color" content="#2196f3">
 <title>Progressive Web Application Starter Kit</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/styles.css">
 <!-- icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon@2x.png">
 <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="32x32">
 <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="16x16">
 <link rel="mask-icon" href="images/icon@2x.png" color="<%= themeColor %>">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
-<header>
+<header style="margin-top:10%;">
 
     <h1>Currency Converter</h1>
 
@@ -26,7 +27,8 @@
 <main>
 
     <div class="container">
-        <h6>Check out the value of your Currency when converted to another at the REAL exchange rate</h6>
+        <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. 
+                The currency converter shows you the true exchange rate, also known as the Live rate. </p>
         <div class="container">
             <div class="card">
                 <div class="card-header">
@@ -36,35 +38,31 @@
 
                         <label for="from">From:</label>
                         <select class="form-control" id="from">
-                              <option value="GDP">GBP</option>
                               <option value="USD">USD</option>
+                              <option value="GHS">GHS</option>
+                              <option value="GBP">GBP</option>
                               <option value="EUR">EURO</option>
-                              <option value="GHS">CEDI</option>
-                            </select>
+                        </select>
 
                         <label for="to">To:</label>
                         <select class="form-control" id="to">
-                              <option value="GHS">CEDI</option>
-                              <option value="EUR">EURO</option>
+                              <option value="GHS">GHS</option>
                               <option value="USD">USD</option>
-                              <option value="GDP">GBP</option>
-                            </select>
+                              <option value="EUR">EURO</option>
+                              <option value="GBP">GBP</option>
+                        </select>
 
                         <button type="submit" class="btn btn-info" id="convert">Convert</button>
-                        <div id="info"></div>
-
                     </form>
+                    <br>
+
                 </div>
                 <div class="card-body">
-                    <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. 
-                        The currency converter shows you the trueexchange rate, also known as the REAL rate. </span>
+                    <div id="info"></div>
                 </div>
-                </p>
             </div>
-
         </div>
     </div>
-
 </main>
 
 
@@ -83,12 +81,6 @@ window.addEventListener('online', function () {
 });
 window.addEventListener('offline', function () {
     //document.querySelector('.connectivity-status').innerText = 'offline';
-    const toast = this.toastCtrl.create({
-				message: 'Oops! It looks like you are offline.',
-				position: 'bottom',
-				showCloseButton: true,
-			});
-	toast.present();
 });
 </script>
 <script>
