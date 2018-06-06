@@ -84,17 +84,25 @@ window.addEventListener('offline', function () {
 });
 </script>
 <script>
+    //Listening For a CLick Event on the Convert Button
     $('#convert').click(function(event) {
+        //Prevent Page from refreshing
         event.preventDefault();
-
+        
+        //Get Value from the From Input
         const from = document.getElementById('from').value;
+        //Get Value from the To Input
         const to = document.getElementById('to').value;
+        //GEt the amount to be converted
         const amount = document.getElementById('amount').value;
 
-
+        //Currency Cnnvertor Base URL
         const baseURI = "https://free.currencyconverterapi.com/api/";
-        const conversion = from + '_' + to;
 
+        //Concactinating THe From and TO to from query parameter
+        const conversion = `${from}_${to}`;
+
+        //Making An Ajax Request to the API
         $.ajax({
             url: baseURI + 'v5/convert',
             type: 'GET',
@@ -107,10 +115,10 @@ window.addEventListener('offline', function () {
             },
             dataType: 'jsonp',
             success: function(data) {
-                const rate = data.USD_GHS.val;
+                const rate = data[conversion].val;
                 const results = amount * rate;
 
-                $('#info').html('<p>Yaay! its ' + results.toFixed(3) + '</p>');
+                $('#info').html('<p>Yaay! its ' + results.toFixed(2) + '</p>');
             }
 
         });
