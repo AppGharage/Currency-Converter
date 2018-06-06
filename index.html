@@ -36,7 +36,7 @@
 
                         <label for="from">From:</label>
                         <select class="form-control" id="from">
-                              <option value="GDP">GDP</option>
+                              <option value="GDP">GBP</option>
                               <option value="USD">USD</option>
                               <option value="EUR">EURO</option>
                               <option value="GHS">CEDI</option>
@@ -47,7 +47,7 @@
                               <option value="GHS">CEDI</option>
                               <option value="EUR">EURO</option>
                               <option value="USD">USD</option>
-                              <option value="GDP">GDP</option>
+                              <option value="GDP">GBP</option>
                             </select>
 
                         <button type="submit" class="btn btn-info" id="convert">Convert</button>
@@ -56,7 +56,8 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. The currency converter shows you the trueexchange rate, also known as the REAL rate. Sending money NOW!</span>
+                    <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. 
+                        The currency converter shows you the trueexchange rate, also known as the REAL rate. </span>
                 </div>
                 </p>
             </div>
@@ -69,34 +70,32 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    //Checking If browser supports service workers
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () =>
-            navigator.serviceWorker.register('serviceWorker.js')
-        );
-    }
-    //Checking User Connectivity Status
-    window.addEventListener('online', function () {
-        document.querySelector('.connectivity-status').innerText = 'online';
-    });
-    window.addEventListener('offline', function () {
-        document.querySelector('.connectivity-status').innerText = 'offline';
-    });
-    </script>
-    <script>
-        //API=>http://free.currencyconverterapi.com/api/v5/convert?q=USD_GHS&compact=y
+//Checking If browser supports service workers
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () =>
+        navigator.serviceWorker.register('serviceWorker.js')
+    );
+}
+//Checking User Connectivity Status
+window.addEventListener('online', function () {
+    document.querySelector('.connectivity-status').innerText = 'online';
+});
+window.addEventListener('offline', function () {
+    document.querySelector('.connectivity-status').innerText = 'offline';
+});
+</script>
+<script>
     $('#convert').click(function(event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const from = document.getElementById('from').value;
-    const to = document.getElementById('to').value;
-    const amount = document.getElementById('amount').value;
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        const amount = document.getElementById('amount').value;
 
 
-    const baseURI = "http://free.currencyconverterapi.com/api/";
-    const conversion = from + '_' + to;
-    
-    //console.log('Hi');
+        const baseURI = "https://free.currencyconverterapi.com/api/";
+        const conversion = from + '_' + to;
+
         $.ajax({
             url: baseURI + 'v5/convert',
             type: 'GET',
@@ -117,6 +116,6 @@
 
         });
     });
-    </script>
+</script>
 </body>
 </html>
