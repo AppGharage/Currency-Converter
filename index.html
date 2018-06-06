@@ -6,49 +6,117 @@
 <meta name="theme-color" content="#3E82F7">
 <title>Progressive Web Application Starter Kit</title>
 <link rel="manifest" href="/manifest.json">
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="css/styles.css">
 <!-- icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon@2x.png">
 <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="32x32">
 <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="16x16">
 <link rel="mask-icon" href="images/icon@2x.png" color="<%= themeColor %>">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
 <header>
 
-    <h1>Progressive Web Application Starter Kit</h1>
+    <h1>Currency Converter</h1>
 
 </header>
 
 <main>
 
-    <p>Oh hey. You are <span class="connectivity-status">online</span>.</p>
+    <div class="container">
+        <h6>Check out the value of your Currency when converted to another at the REAL exchange rate</h6>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <form class="form-inline">
+                        <label for="amount">Amount:</label>
+                        <input type="number" class="form-control" id="amount">
+
+                        <label for="from">From:</label>
+                        <select class="form-control" id="from">
+                              <option value="GDP">GDP</option>
+                              <option value="USD">USD</option>
+                              <option value="EUR">EURO</option>
+                              <option value="GHS">CEDI</option>
+                            </select>
+
+                        <label for="to">To:</label>
+                        <select class="form-control" id="to">
+                              <option value="GHS">CEDI</option>
+                              <option value="EUR">EURO</option>
+                              <option value="USD">USD</option>
+                              <option value="GDP">GDP</option>
+                            </select>
+
+                        <button type="submit" class="btn btn-info" id="convert">Convert</button>
+                        <div id="info"></div>
+
+                    </form>
+                </div>
+                <div class="card-body">
+                    <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. The currency converter shows you the trueexchange rate, also known as the REAL rate. Sending money NOW!</span>
+                </div>
+                </p>
+            </div>
+
+        </div>
+    </div>
 
 </main>
 
-<img src="images/google.png" alt="Google">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+    //Checking If browser supports service workers
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () =>
+            navigator.serviceWorker.register('serviceWorker.js')
+        );
+    }
+    //Checking User Connectivity Status
+    window.addEventListener('online', function () {
+        document.querySelector('.connectivity-status').innerText = 'online';
+    });
+    window.addEventListener('offline', function () {
+        document.querySelector('.connectivity-status').innerText = 'offline';
+    });
+    </script>
+    <script>
+        //API=>http://free.currencyconverterapi.com/api/v5/convert?q=USD_GHS&compact=y
+    $('#convert').click(function(event) {
+    event.preventDefault();
 
-//Checking If browser supports service workers
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () =>
-        navigator.serviceWorker.register('serviceWorker.js')
-    );
-}
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+    const amount = document.getElementById('amount').value;
 
-//Checking User Connectivity Status
-window.addEventListener('online', function () {
-    document.querySelector('.connectivity-status').innerText = 'online';
-});
 
-window.addEventListener('offline', function () {
-    document.querySelector('.connectivity-status').innerText = 'offline';
-});
+    const baseURI = "http://free.currencyconverterapi.com/api/";
+    const conversion = from + '_' + to;
+    
+    //console.log('Hi');
+        $.ajax({
+            url: baseURI + 'v5/convert',
+            type: 'GET',
+            data: {
+                q: conversion,
+                compact:'y' ,
+            },
+            error: function() {
+                $('#info').html('<p>An error has occurred</p>');
+            },
+            dataType: 'jsonp',
+            success: function(data) {
+                const rate = data.USD_GHS.val;
+                const results = amount * rate;
 
-</script>
+                $('#info').html('<p>Yaay! its ' + results.toFixed(3) + '</p>');
+            }
 
+        });
+    });
+    </script>
 </body>
 </html>

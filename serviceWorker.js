@@ -1,6 +1,6 @@
 //Naming the Cahced files
 const cacheName = 'pwa-starter-kit';
-const cacheVersion = `${cacheName}::1.0.1`;
+const cacheVersion = `${cacheName}::1.1.1`;
 
 //Variable to hold cahce files
 const cachedFiles = [
