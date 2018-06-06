@@ -23,28 +23,24 @@
 
 </main>
 
-<img src="/images/google.png" alt="Google">
+<img src="images/google.png" alt="Google">
 
 <script>
 
+//Checking If browser supports service workers
 if ('serviceWorker' in navigator) {
-
     window.addEventListener('load', () =>
         navigator.serviceWorker.register('serviceWorker.js')
     );
-
 }
 
+//Checking User Connectivity Status
 window.addEventListener('online', function () {
-
     document.querySelector('.connectivity-status').innerText = 'online';
-
-})
+});
 
 window.addEventListener('offline', function () {
-
     document.querySelector('.connectivity-status').innerText = 'offline';
-
 });
 
 </script>
