@@ -51,7 +51,7 @@
                         <div class="form-row">
                             <div class="col-sm-4"></div>
                             <div class=" col-sm-4 mb-4 mr-sm-4 col-md-4 mb-3 mx-sm- ">
-                                <input type="number" class="form-control" id="result" readonly>
+                                <input type="number" class="form-control" id="info" readonly>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
@@ -120,7 +120,7 @@
                     const rate = data[conversion].val;
                     const results = amount * rate;
 
-                    $('#info').html('<p>Yaay! its ' + results.toFixed(2) + '</p>');
+                    $('#info').html(results.toFixed(2));
                 }
 
             });
