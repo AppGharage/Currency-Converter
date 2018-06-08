@@ -12,8 +12,8 @@
 
 .rounded {
     position: absolute;
-    left: 40%;
-    bottom: 70%;
+    left: 30%;
+    bottom: 50%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -23,9 +23,23 @@
     }
 }
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape)and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait)and (-webkit-min-device-pixel-ratio: 2) {
+    /*ipad pro*/
     .rounded {
-        bottom: 85%;
+        bottom: 70%;
+    }
+    h1 {
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape)and (-webkit-min-device-pixel-ratio: 2) {
+    /*ipad pro*/
+    .rounded {
+        bottom: 60%;
+    }
+    h1 {
+        padding-top: 10%;
     }
 }
 
@@ -33,6 +47,19 @@
     /*ipad*/
     .rounded {
         top: 2%;
+    }
+    h1 {
+        padding-top: 10%;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)and (-webkit-min-device-pixel-ratio: 2) {
+    /*ipad*/
+    .rounded {
+        top: 2%;
+    }
+    h1 {
+        padding-top: 10%;
     }
 }
 
@@ -52,7 +79,10 @@
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
     /*iphonex */
     .rounded {
-        bottom: 92%;
+        top: 3%;
+    }
+    h1 {
+        padding-top: 10%;
     }
 }
 
@@ -63,17 +93,15 @@
     }
 }
 
-
-/*iphon6/7/8 portrait*/
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px)and (orientation: portrait) {
+    /*iphon6/7/8 portrait*/
     .rounded {
-        bottom: 90%;
+        top: 5%;
+    }
+    h1 {
+        padding-top: 10%;
     }
 }
-
-
-/*iphone 6/7/8*/
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
     .btn {
@@ -84,10 +112,18 @@
     }
 }
 
-
-/*iphone 6/7/8 plus*/
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+    /*iphone 6/7/8 plus*/
+    .rounded {
+        bottom: 75%;
+    }
+    h1 {
+        padding-top: 10%;
+    }
+}
 
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
+    /*iphone 6/7/8 plus*/
     .rounded {
         bottom: 75%;
     }
@@ -96,7 +132,10 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
     /* iphone 5 */
     .rounded {
-        bottom: 90%;
+        top: 3%;
+    }
+    h1 {
+        padding-top: 13%;
     }
 }
 
@@ -111,5 +150,19 @@
     /* pixel */
     .rounded {
         bottom: 70%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
+    /* iphone4 */
+    .rounded {
+        bottom: 75%;
+    }
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (orientation: portrait) {
+    /* iphone4 */
+    .rounded {
+        bottom: 80%;
     }
 }
