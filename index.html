@@ -1,128 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1">
-<meta name="theme-color" content="#2196f3">
-<title>Progressive Web Application Starter Kit</title>
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="css/styles.css">
-<!-- icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="images/icon@2x.png">
-<link rel="icon" type="image/png" href="images/icon@2x.png" sizes="32x32">
-<link rel="icon" type="image/png" href="images/icon@2x.png" sizes="16x16">
-<link rel="mask-icon" href="images/icon@2x.png" color="<%= themeColor %>">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="theme-color" content="#2196f3">
+    <title>Progressive Web Application Starter Kit</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon@2x.png">
+    <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/icon@2x.png" sizes="16x16">
+    <link rel="mask-icon" href="images/icon@2x.png" color="<%= themeColor %>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
 
-<header style="margin-top:10%;">
+    <img src="images/ct1.png" class="rounded" width="20%;">
 
-    <h1>Currency Converter</h1>
-
-</header>
-
-<main>
-
-    <div class="container">
-        <p>This currency converter allows you to check how much you would get when you convert your currency into another currency. 
-                The currency converter shows you the true exchange rate, also known as the Live rate. </p>
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <form class="form-inline">
-                        <label for="amount">Amount:</label>
-                        <input type="number" class="form-control" id="amount">
-
-                        <label for="from">From:</label>
-                        <select class="form-control" id="from">
-                              <option value="USD">USD</option>
-                              <option value="GHS">GHS</option>
-                              <option value="GBP">GBP</option>
-                              <option value="EUR">EURO</option>
-                        </select>
-
-                        <label for="to">To:</label>
-                        <select class="form-control" id="to">
-                              <option value="GHS">GHS</option>
-                              <option value="USD">USD</option>
-                              <option value="EUR">EURO</option>
-                              <option value="GBP">GBP</option>
-                        </select>
-
-                        <button type="submit" class="btn btn-info" id="convert">Convert</button>
-                    </form>
-                    <br>
-
-                </div>
-                <div class="card-body">
-                    <div id="info"></div>
-                </div>
-            </div>
-        </div>
     </div>
-</main>
+    <div class="container">
+        <h1 class="text-center" style="padding-top: 17%">Currency Converter</h1>
+        <p class="text-center">This currency converter allows you to check how much you would get when you convert<br> your currency into another currency. The currency converter shows you the true<br> exchange rate, also known as the LIVE rate.
+
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="form-row">
+
+                            <div class="col-sm-3  col-xs-6 "><label for="amount">Amount:</label>
+                                <input type="number" class="form-control" id="amount"></div>
+                            <div class="col-sm-3 col-xs-6"><label for="from">From:</label>
+                                <select class="form-control" id="from">
+                                              <option>GBP</option>
+                                              <option>USD</option>
+                                              <option>EURO</option>
+                                              <option>CEDI</option>
+                                            </select></div>
+                            <div class="col-sm-3 col-xs-6"> <label for="to">To:</label>
+                                <select class="form-control" id="to">
+                                              <option>CEDI</option>
+                                              <option>EURO</option>
+                                              <option>USD</option>
+                                              <option>GBP</option>
+                                            </select></div>
+                            <div class="col-sm-3   "><button type="submit" class="btn ">Convert</button></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-4"></div>
+                            <div class=" col-sm-4 mb-4 mr-sm-4 col-md-4 mb-3 mx-sm- ">
+                                <input type="number" class="form-control" id="result" readonly>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-//Checking If browser supports service workers
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () =>
-        navigator.serviceWorker.register('serviceWorker.js')
-    );
-}
-//Checking User Connectivity Status
-window.addEventListener('online', function () {
-    //document.querySelector('.connectivity-status').innerText = 'online';
 
-});
-window.addEventListener('offline', function () {
-    //document.querySelector('.connectivity-status').innerText = 'offline';
-});
-</script>
-<script>
-    //Listening For a CLick Event on the Convert Button
-    $('#convert').click(function(event) {
-        //Prevent Page from refreshing
-        event.preventDefault();
-        
-        //Get Value from the From Input
-        const from = document.getElementById('from').value;
-        //Get Value from the To Input
-        const to = document.getElementById('to').value;
-        //GEt the amount to be converted
-        const amount = document.getElementById('amount').value;
+                    </div>
 
-        //Currency Cnnvertor Base URL
-        const baseURI = "https://free.currencyconverterapi.com/api/";
 
-        //Concactinating THe From and TO to from query parameter
-        const conversion = `${from}_${to}`;
+                </div>
 
-        //Making An Ajax Request to the API
-        $.ajax({
-            url: baseURI + 'v5/convert',
-            type: 'GET',
-            data: {
-                q: conversion,
-                compact:'y' ,
-            },
-            error: function() {
-                $('#info').html('<p>An error has occurred</p>');
-            },
-            dataType: 'jsonp',
-            success: function(data) {
-                const rate = data[conversion].val;
-                const results = amount * rate;
+            </div>
+    </div>
+    </main>
 
-                $('#info').html('<p>Yaay! its ' + results.toFixed(2) + '</p>');
-            }
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        //Checking If browser supports service workers
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () =>
+                navigator.serviceWorker.register('serviceWorker.js')
+            );
+        }
+        //Checking User Connectivity Status
+        window.addEventListener('online', function() {
+            //document.querySelector('.connectivity-status').innerText = 'online';
 
         });
-    });
-</script>
+        window.addEventListener('offline', function() {
+            //document.querySelector('.connectivity-status').innerText = 'offline';
+        });
+    </script>
+    <script>
+        //Listening For a CLick Event on the Convert Button
+        $('#convert').click(function(event) {
+            //Prevent Page from refreshing
+            event.preventDefault();
+
+            //Get Value from the From Input
+            const from = document.getElementById('from').value;
+            //Get Value from the To Input
+            const to = document.getElementById('to').value;
+            //GEt the amount to be converted
+            const amount = document.getElementById('amount').value;
+
+            //Currency Cnnvertor Base URL
+            const baseURI = "https://free.currencyconverterapi.com/api/";
+
+            //Concactinating THe From and TO to from query parameter
+            const conversion = `${from}_${to}`;
+
+            //Making An Ajax Request to the API
+            $.ajax({
+                url: baseURI + 'v5/convert',
+                type: 'GET',
+                data: {
+                    q: conversion,
+                    compact: 'y',
+                },
+                error: function() {
+                    $('#info').html('<p>An error has occurred</p>');
+                },
+                dataType: 'jsonp',
+                success: function(data) {
+                    const rate = data[conversion].val;
+                    const results = amount * rate;
+
+                    $('#info').html('<p>Yaay! its ' + results.toFixed(2) + '</p>');
+                }
+
+            });
+        });
+    </script>
 </body>
+
 </html>
