@@ -34,24 +34,24 @@
                                 <input type="number" class="form-control" id="amount"></div>
                             <div class="col-sm-3 col-xs-6"><label for="from">From:</label>
                                 <select class="form-control" id="from">
-                                              <option>GBP</option>
-                                              <option>USD</option>
-                                              <option>EURO</option>
-                                              <option>CEDI</option>
-                                            </select></div>
+                                              <option value="USD">USD</option>
+                                              <option value="GHS">GHS</option>
+                                              <option value="EUR">EURO</option>
+                                              <option value="GBP">GBP</option>
+                                </select></div>
                             <div class="col-sm-3 col-xs-6"> <label for="to">To:</label>
                                 <select class="form-control" id="to">
-                                              <option>CEDI</option>
-                                              <option>EURO</option>
-                                              <option>USD</option>
-                                              <option>GBP</option>
-                                            </select></div>
-                            <div class="col-sm-3   "><button type="submit" class="btn ">Convert</button></div>
+                                            <option value="GHS">GHS</option>
+                                            <option value="EUR">EURO</option>
+                                            <option value="USD">USD</option>
+                                            <option value="GBP">GBP</option>
+                                        </select></div>
+                            <div class="col-sm-3   "><button type="submit" class="btn" id="convert">Convert</button></div>
                         </div>
                         <div class="form-row">
                             <div class="col-sm-4"></div>
                             <div class=" col-sm-4 mb-4 mr-sm-4 col-md-4 mb-3 mx-sm- ">
-                                <input type="number" class="form-control" id="info" readonly>
+                                <input type="text" class="form-control" id="info" readonly>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
@@ -92,11 +92,11 @@
             event.preventDefault();
 
             //Get Value from the From Input
-            const from = document.getElementById('from').value;
+            const from = $('#from').val();
             //Get Value from the To Input
-            const to = document.getElementById('to').value;
+            const to = $('#to').val();
             //GEt the amount to be converted
-            const amount = document.getElementById('amount').value;
+            const amount = $('#amount').val();
 
             //Currency Cnnvertor Base URL
             const baseURI = "https://free.currencyconverterapi.com/api/";
@@ -117,10 +117,12 @@
                 },
                 dataType: 'jsonp',
                 success: function(data) {
+
                     const rate = data[conversion].val;
                     const results = amount * rate;
 
-                    $('#info').html(results.toFixed(2));
+                    $('#info').val(results.toFixed(2));
+
                 }
 
             });
