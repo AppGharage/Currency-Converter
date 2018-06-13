@@ -5,7 +5,8 @@ const cacheVersion = `${cacheName}::1.3.4`;
 //Variable to hold cahce files
 const cachedFiles = [
     '/',
-    '/css/styles.css'
+    '/css/styles.css',
+    '/images/ct1.png'
 ];
 
 //Variables to hold Network files
